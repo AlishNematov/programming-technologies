@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   padding: 2rem;
+  background-color:  #C5CBE3;
 }
 
 .navigation {
@@ -12,10 +13,10 @@
   font-size: 1.6rem;
 
   &__link {
-    color: black;
+    color: #17252A;
 
     &:hover {
-      border-bottom: 1px solid #000;
+      border-bottom: 1px solid #17252A;
     }
   }
 }
