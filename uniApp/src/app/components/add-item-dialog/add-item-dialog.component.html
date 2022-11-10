@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Добавление информации о багаже</h1>
+<div mat-dialog-content>
+  <p>Введите количество багажа</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Количество багажа</mat-label>
+    <input matInput [(ngModel)]="data.amountOfLuggage">
+  </mat-form-field>
+  <p>Введите вес багажа</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Общий вес багажа</mat-label>
+    <input matInput [(ngModel)]="data.totalWeight">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button color="primary" [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>
