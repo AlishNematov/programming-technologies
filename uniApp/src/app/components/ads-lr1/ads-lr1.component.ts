@@ -36,6 +36,7 @@ export class AdsLr1Component implements OnInit {
   }
 
   generateFirstArray() {
+    this.firstExAnswerVisible = false;
     this.firstArray = this.generateArray(this.firstExArraylength);
     this.firstExControl = new FormControl("", [Validators.max(Math.max(...this.firstArray)), Validators.min(0), Validators.required]);
   }
@@ -49,6 +50,7 @@ export class AdsLr1Component implements OnInit {
   }
 
   generateSecondArray() {
+    this.secondExAnswer = '';
     this.secondExArray = this.generateArrayUnique(this.secondExArraylength, );
   }
 
@@ -74,6 +76,7 @@ export class AdsLr1Component implements OnInit {
   }
 
   generateFourtArray() {
+    this.fourthExAnswerVisible = false;
     this.fourthExArray = this.generateArray(this.fourthExArraylength, -100);
   }
 
