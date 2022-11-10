@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
@@ -11,6 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule  } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +24,7 @@ import { PtComponent } from './pages/pt/pt.component';
 import { AdsComponent } from './pages/ads/ads.component';
 import { PtLr1Component } from './components/pt-lr1/pt-lr1.component';
 import { AddItemDialogComponent } from './components/add-item-dialog/add-item-dialog.component';
+import { AdsLr1Component } from './components/ads-lr1/ads-lr1.component';
 
 @NgModule({
   declarations: [
@@ -34,13 +36,15 @@ import { AddItemDialogComponent } from './components/add-item-dialog/add-item-di
     PtComponent,
     AdsComponent,
     PtLr1Component,
-    AddItemDialogComponent
+    AddItemDialogComponent,
+    AdsLr1Component
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     MatTabsModule,
     MatTableModule,
     MatSortModule,
@@ -49,7 +53,8 @@ import { AddItemDialogComponent } from './components/add-item-dialog/add-item-di
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

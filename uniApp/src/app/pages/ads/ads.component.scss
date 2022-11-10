@@ -1,0 +1,11 @@
+:host {
+  margin: 2rem;
+}
+:host ::ng-deep table {
+  width: 100%;
+}
+
+:host ::ng-deep .mat-tab-group {
+  gap: 1rem;
+  margin: 1rem;
+}
