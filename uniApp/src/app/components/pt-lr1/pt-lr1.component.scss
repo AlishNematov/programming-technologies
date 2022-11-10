@@ -1,0 +1,23 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.row-is-clicked {
+  font-weight: bold;
+}
+
+.row-is-max {
+  background: paleturquoise;
+}
+
+tr.element-row:hover {
+  background: whitesmoke;
+}
+
+.buttons {
+  align-self: center;
+  display: flex;
+  gap: 1rem;
+}
