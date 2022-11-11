@@ -1,0 +1,125 @@
+<mat-card class="mat-h3">
+  Вариант 3
+</mat-card>
+<mat-accordion>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Задание 1
+      </mat-panel-title>
+      <mat-panel-description>
+        Упорядочить  элементы массива по убыванию и вычислить произведение первого и последнего элементов
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="container">
+      <form class="example-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Введите длину массива</mat-label>
+          <input matInput placeholder="Длина массива" [(ngModel)]="firstExArraylength" type="number" [formControl]="rateControl">
+          <span class="error" *ngIf="rateControl.errors?.['max']">слишком большое число</span>
+          <span class="error" *ngIf="rateControl.errors?.['required']">необходимо ввести число</span>
+        </mat-form-field>
+        <button [disabled]="rateControl.errors?.['required'] || rateControl.errors?.['max']"
+                mat-raised-button color="primary" (click)="generateFirstArray()">Сгенерировать массив</button>
+      </form>
+      <div *ngIf="firstArray.length" class="array">
+        <h2>Массив</h2>
+        <span class="array__values">{{ firstArray.join(' , ') }}</span>
+      </div>
+      <button [disabled]="!firstArray.length"
+              mat-raised-button color="primary" (click)="getSolutionFirstEx()">Найти решение</button>
+      <div *ngIf="firstExAnswerVisible" class="array">
+        <h2>Ответ</h2>
+        <span class="array__values">{{ firstExAnswerArr.join(' , ') }}</span>
+        <span class="array__values">Произведение первого и последнего элементов: {{ firstExAnswerSum }}</span>
+      </div>
+    </div>
+  </mat-expansion-panel>
+
+   <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Задание 2
+      </mat-panel-title>
+      <mat-panel-description>
+        Удалить из массива P(N) все элементы, кратные 3.
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="container">
+      <form class="example-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Введите длину массива</mat-label>
+          <input matInput placeholder="Длина массива" [(ngModel)]="secondExArraylength" type="number" [formControl]="rateControl">
+          <span class="error" *ngIf="rateControl.errors?.['max']">слишком большое число</span>
+          <span class="error" *ngIf="rateControl.errors?.['required']">необходимо ввести число</span>
+        </mat-form-field>
+        <button [disabled]="rateControl.errors?.['required'] || rateControl.errors?.['max']"
+                mat-raised-button color="primary" (click)="generateSecondArray()">Сгенерировать массив</button>
+      </form>
+      <div *ngIf="secondExArray.length" class="array">
+        <h2>Массив</h2>
+        <div class="array__values">
+          <span *ngFor="let item of secondExArray; let i = index" [class.delete]="secondExAnswerVisible && !secondExAnswerArr.includes(item)">
+            {{item + (i === secondExArray.length - 1 ? " " : ",")}}
+          </span>
+        </div>
+      </div>
+      <button [disabled]="!secondExArray.length"
+                mat-raised-button color="primary" (click)="getSolutionSecondEx()">Найти решение</button>
+      <div *ngIf="secondExAnswerVisible" class="array">
+        <h2>Ответ</h2>
+        <span class="array__values">{{ secondExAnswerArr.join(' , ') }}</span>
+      </div>
+    </div>
+  </mat-expansion-panel>
+
+   <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Задание 3
+      </mat-panel-title>
+      <mat-panel-description>
+        Вставить 3 перед каждым элементом  массива X(M), большим заданного числа В.
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="container">
+      <form class="example-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Введите длину массива</mat-label>
+          <input matInput placeholder="Длина массива" [(ngModel)]="thirdExArraylength" type="number" [formControl]="rateControl">
+          <span class="error" *ngIf="rateControl.errors?.['max']">слишком большое число</span>
+          <span class="error" *ngIf="rateControl.errors?.['required']">необходимо ввести число</span>
+        </mat-form-field>
+        <button [disabled]="rateControl.errors?.['required'] || rateControl.errors?.['max']"
+                mat-raised-button color="primary" (click)="generateThirdArray()">Сгенерировать массив</button>
+      </form>
+      <div *ngIf="thirdExArray.length" class="array">
+        <h2>Массив</h2>
+        <span class="array__values">{{ thirdExArray.join(' , ') }}</span>
+      </div>
+      <form *ngIf="thirdExArray.length" class="example-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Введите число B</mat-label>
+          <input matInput placeholder="Длина массива" [(ngModel)]="thirdExValue" type="number" [formControl]="thirdExControl">
+          <span class="error" *ngIf="thirdExControl.errors?.['max']">слишком большое число</span>
+          <span class="error" *ngIf="thirdExControl.errors?.['required']">необходимо ввести число</span>
+        </mat-form-field>
+        <button [disabled]="thirdExControl.errors?.['required'] || thirdExControl.errors?.['max']"
+                mat-raised-button color="primary" (click)="getSolutionThirdEx()">Найти решение</button>
+      </form>
+      <div *ngIf="thirdExAnswerVisible" class="array">
+        <h2>Ответ</h2>
+        <div class="array__values">
+          <span *ngFor="let item of thirdExArray; let i = index">
+            <span *ngIf="item > thirdExValue" class="even">3,</span>
+            {{item + (i === thirdExArray.length - 1 ? " " : ",")}}
+          </span>
+        </div>
+      </div>
+    </div>
+  </mat-expansion-panel>
+
+</mat-accordion>
