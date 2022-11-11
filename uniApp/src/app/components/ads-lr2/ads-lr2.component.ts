@@ -13,7 +13,7 @@ export class AdsLr2Component implements OnInit {
   firstArray: number[] = [];
   firstExArraylength = 10;
   firstExAnswerArr: number[] = [];
-  firstExAnswerSum!: number;
+  firstExAnswerMult!: number;
   firstExAnswerVisible = false;
 
   secondExArraylength = 10;
@@ -40,7 +40,7 @@ export class AdsLr2Component implements OnInit {
   getSolutionFirstEx() {
     this.firstExAnswerArr = [...this.firstArray];
     this.firstExAnswerArr.sort((a,b) => b - a);
-    this.firstExAnswerSum = this.firstExAnswerArr[0] + this.firstExAnswerArr[this.firstExAnswerArr.length - 1]
+    this.firstExAnswerMult = this.firstExAnswerArr[0] * this.firstExAnswerArr[this.firstExAnswerArr.length - 1]
     this.firstExAnswerVisible = true;
   }
 
