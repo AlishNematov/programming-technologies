@@ -60,7 +60,11 @@
       </form>
       <div *ngIf="secondExArray.length" class="array">
         <h2>Массив</h2>
-        <span class="array__values">{{ secondExArray.join(' , ') }}</span>
+        <div class="array__values">
+          <span *ngFor="let item of secondExArray; let i = index" [class.delete]="secondExAnswerVisible && !secondExAnswerArr.includes(item)">
+            {{item + (i === secondExArray.length - 1 ? " " : ",")}}
+          </span>
+        </div>
       </div>
       <button [disabled]="!secondExArray.length"
                 mat-raised-button color="primary" (click)="getSolutionSecondEx()">Найти решение</button>
