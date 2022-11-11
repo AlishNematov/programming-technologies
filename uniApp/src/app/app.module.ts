@@ -25,6 +25,7 @@ import { AdsComponent } from './pages/ads/ads.component';
 import { PtLr1Component } from './components/pt-lr1/pt-lr1.component';
 import { AddItemDialogComponent } from './components/add-item-dialog/add-item-dialog.component';
 import { AdsLr1Component } from './components/ads-lr1/ads-lr1.component';
+import { AdsLr2Component } from './components/ads-lr2/ads-lr2.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AdsLr1Component } from './components/ads-lr1/ads-lr1.component';
     AdsComponent,
     PtLr1Component,
     AddItemDialogComponent,
-    AdsLr1Component
+    AdsLr1Component,
+    AdsLr2Component
   ],
   imports: [
     BrowserModule,
