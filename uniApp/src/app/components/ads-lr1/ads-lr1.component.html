@@ -112,7 +112,7 @@
         <div class="array__items">
           <span class="array__value" *ngFor="let item of thirdExArray; let i = index"
             [class.even]="!(item%2)" >
-            {{item%2 ? item : item/2}}
+            {{item%2 ? item : item - 2}}
             {{i === thirdExArray.length - 1?"": ","}}
           </span>
         </div>
