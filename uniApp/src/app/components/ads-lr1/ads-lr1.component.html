@@ -1,0 +1,155 @@
+<mat-accordion>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Задание 1
+      </mat-panel-title>
+      <mat-panel-description>
+        Дан массив из К целых чисел. Вычислить сумму и произведение элементов массива, больших числа В.
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="container">
+      <form class="example-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Введите длину массива</mat-label>
+          <input matInput placeholder="Длина массива" [(ngModel)]="firstExArraylength" type="number" [formControl]="rateControl">
+          <span class="error" *ngIf="rateControl.errors?.['max']">слишком большое число</span>
+          <span class="error" *ngIf="rateControl.errors?.['required']">необходимо ввести число</span>
+        </mat-form-field>
+        <button [disabled]="rateControl.errors?.['required'] || rateControl.errors?.['max']"
+                mat-raised-button color="primary" (click)="generateFirstArray()">Сгенерировать массив</button>
+      </form>
+      <div *ngIf="firstArray.length" class="array">
+        <h2>Массив</h2>
+        <span class="array__values">{{ firstArray.join(' , ') }}</span>
+      </div>
+      <form *ngIf="firstArray.length" class="example-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Введите число B</mat-label>
+          <input matInput placeholder="Длина массива" [(ngModel)]="firstExValue" type="number" [formControl]="firstExControl">
+          <span class="error" *ngIf="firstExControl.errors?.['max']">слишком большое число</span>
+          <span class="error" *ngIf="firstExControl.errors?.['required']">необходимо ввести число</span>
+        </mat-form-field>
+        <button [disabled]="firstExControl.errors?.['required'] || firstExControl.errors?.['max']"
+                mat-raised-button color="primary" (click)="getSolutionFirstEx()">Найти решение</button>
+      </form>
+      <div *ngIf="firstExAnswerVisible" class="array">
+        <h2>Ответ</h2>
+        <span class="array__values">Сумма элементов массива, больших {{ firstExValue }}: {{ firstExAnswer.sum }}</span>
+        <span class="array__values">Произведение элементов массива, больших {{ firstExValue }}: {{ firstExAnswer.product }}</span>
+      </div>
+    </div>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Задание 2
+      </mat-panel-title>
+      <mat-panel-description>
+        В  массиве B(N) заменить минимальный элемент числом  100  и вывести полученный массив.
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="container">
+      <form class="example-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Введите длину массива</mat-label>
+          <input matInput placeholder="Длина массива" [(ngModel)]="secondExArraylength" type="number" [formControl]="rateControl">
+          <span class="error" *ngIf="rateControl.errors?.['max']">слишком большое число</span>
+          <span class="error" *ngIf="rateControl.errors?.['required']">необходимо ввести число</span>
+        </mat-form-field>
+        <button [disabled]="rateControl.errors?.['required'] || rateControl.errors?.['max']"
+                mat-raised-button color="primary" (click)="generateSecondArray()">Сгенерировать массив</button>
+      </form>
+      <div *ngIf="secondExArray.length" class="array">
+        <h2>Массив</h2>
+        <span class="array__values">{{ secondExArray.join(' , ') }}</span>
+      </div>
+      <button [disabled]="!secondExArray.length"
+                mat-raised-button color="primary" (click)="getSolutionSecondEx()">Найти решение</button>
+      <div *ngIf="secondExAnswer" class="array">
+        <h2>Ответ</h2>
+        <span class="array__values">
+          {{ secondExArray.slice(0, secondExIndexMin).join(" , ") }}
+          <strong class="even">{{secondExAnswer}}</strong>
+          {{ secondExArray.slice(secondExIndexMin+1).join(" , ") }}
+        </span>
+      </div>
+    </div>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Задание 3
+      </mat-panel-title>
+      <mat-panel-description>
+        В массиве А из 8 целых чисел уменьшить на 2 все четные элементы и вывести полученный массив.
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="container">
+      <button mat-raised-button color="primary" (click)="generateThirdArray()">Сгенерировать массив</button>
+      <div *ngIf="thirdExArray.length" class="array">
+        <h2>Массив</h2>
+        <div class="array__items">
+          <span class="array__value" *ngFor="let item of thirdExArray; let i = index"
+            [class.even]="!(item%2) && thirdExAnswerVisible" >
+            {{item}}
+            {{i === thirdExArray.length - 1?"": ","}}
+          </span>
+        </div>
+      </div>
+      <button [disabled]="!thirdExArray.length"
+                mat-raised-button color="primary" (click)="getSolutionThirdEx()">Найти решение</button>
+      <div *ngIf="thirdExAnswerVisible" class="array">
+        <h2>Ответ</h2>
+        <div class="array__items">
+          <span class="array__value" *ngFor="let item of thirdExArray; let i = index"
+            [class.even]="!(item%2)" >
+            {{item%2 ? item : item/2}}
+            {{i === thirdExArray.length - 1?"": ","}}
+          </span>
+        </div>
+      </div>
+    </div>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Задание 4
+      </mat-panel-title>
+      <mat-panel-description>
+        Дан массив Р(М). Вычислить сумму четных элементов, кратных 7, произведение отрицательных нечетных элементов и максимум из отрицательных элементов.
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="container">
+      <form class="example-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Введите длину массива</mat-label>
+          <input matInput placeholder="Длина массива" [(ngModel)]="fourthExArraylength" type="number" [formControl]="rateControl">
+          <span class="error" *ngIf="rateControl.errors?.['max']">слишком большое число</span>
+          <span class="error" *ngIf="rateControl.errors?.['required']">необходимо ввести число</span>
+        </mat-form-field>
+        <button [disabled]="rateControl.errors?.['required'] || rateControl.errors?.['max']"
+                mat-raised-button color="primary" (click)="generateFourtArray()">Сгенерировать массив</button>
+      </form>
+      <div *ngIf="fourthExArray.length" class="array">
+        <h2>Массив</h2>
+        <span class="array__values">{{ fourthExArray.join(' , ') }}</span>
+      </div>
+      <button [disabled]="!fourthExArray.length"
+              mat-raised-button color="primary" (click)="getSolutionFourtEx()">Найти решение</button>
+      <div *ngIf="fourthExAnswerVisible" class="array">
+        <h2>Ответ</h2>
+        <span>Сумма четных элементов, кратных 7: {{fourthExAnswer.sum}}</span>
+        <span>Произведение отрицательных нечетных элементов: {{fourthExAnswer.productOf}}</span>
+        <span>Максимум из отрицательных элементов: {{fourthExAnswer.maxOf}}</span>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
